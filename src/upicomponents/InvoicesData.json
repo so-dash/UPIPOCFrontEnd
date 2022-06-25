@@ -1,0 +1,74 @@
+[{
+        "no":1,
+        "invoiceNumber": 	"26cb3b47-8af5-4044-8bd7-f05be99a83a5",
+        "subscription": "Pay as you go",
+        "invoiceDate": "03/08/22",
+        "billingPeriod":"12/07/21-03/07/22",
+        "amount": 4322.45,
+        "totalAmount":4325.25,
+        "type": "Azure",
+        "status":"Pending Due"
+        
+    },
+    {
+        "no": 2,
+        "invoiceNumber":  "c1a008fd-1945-4222-8256-627faca12a04",
+        "subscription": "Developer Support",
+        "invoiceDate": "02/08/22",
+        "billingPeriod":"01/07/21-02/06/22",
+        "amount": 5467.45,
+        "totalAmount":6000.23,
+        "type": "Azure",
+        "status":"Pending Due"
+    },
+    {
+        "no":3,
+        "invoiceNumber": "c1a008fd-1945-4222-8256-627faca12a04",
+        "subscription": "Developer Support",
+        "invoiceDate": "12/08/21",
+        "billingPeriod":"12/16/22-12/31/22",
+        "amount": 3002.23,
+        "totalAmount":5467.55,
+        "type": "Azure",
+        "status":"Pending Due"
+        
+    },
+    {
+        "no":4,
+        "invoiceNumber": "138dea62-f35e-4b9d-a0ff-05127ab93768",
+        "subscription": "Pay as you go",
+        "invoiceDate": "12/08/22",
+        "billingPeriod":"12/07/21-12/07/22",
+        "amount": 1012.32,
+        "totalAmount":4325.25,
+        "type": "Azure",
+        "status":"Pending Due"
+        
+    },
+    {
+        "no":5,
+        "invoiceNumber":  "c92e0ffd-e9ba-47b0-91b5-25c3acfad222",
+        "subscription": "Developer Support",
+        "invoiceDate": "05/07/22",
+        "billingPeriod":"09/03/21-10/07/22",
+        "amount": 4325.25,
+        "totalAmount":5436.25,
+        "type": "Azure",
+        "status":"Pending Due"
+        
+    },
+    {
+        "no":6,
+        "invoiceNumber":  "d12e1b5-25c39ba-47b0-9d222acfa0ffd-e",
+        "subscription": "Developer Support",
+        "invoiceDate": "05/07/22",
+        "billingPeriod":"09/03/21-10/07/22",
+        "amount": 2375.25,
+        "totalAmount":5436.25,
+        "type": "Azure",
+        "status":"Pending Due"
+        
+    }
+    
+]
+

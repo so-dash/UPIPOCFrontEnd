@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+  color: antiquewhite;
+}
+
+.inputblock {
+  padding: 5%;
+}
+
+.guageNotif {
+  text-align: left;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.vcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}
+
+.paymentmethodicon {
+  width: 3vh;
+}
+
+.paymentmethodname {
+  padding: 2vh;
+}

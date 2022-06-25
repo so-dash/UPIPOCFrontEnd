@@ -1,0 +1,22 @@
+.inputConsole {
+    background-color: #7b3581;
+    color: whitesmoke;
+    resize:none;
+}
+
+.inputConsole::placeholder{
+    color: #f788f7;
+}
+
+.outputConsole {
+    background-color: #272822;
+    color: whitesmoke;
+    width: 100%;
+    display: block;
+    word-wrap: break-word;
+    resize: none;
+}
+
+.outputConsole::placeholder{
+    color: rgb(170, 132, 125);
+}
