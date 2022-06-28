@@ -18,7 +18,7 @@ export interface IInvoiceDetails {
 
 
 export const InvoiceDetails = (props: any) => {
-  
+  //fetching the unique invoice numer to access its details 
   let UID = useLocation().pathname.split('/')[1]
   const [invoice,setinvoice] = useState(props.data.filter((invoice: any)=> invoice.invoiceNumber==UID)[0])
   props.setInvoice(invoice);
@@ -26,9 +26,6 @@ export const InvoiceDetails = (props: any) => {
   useEffect(() => {
     if (props.view==props.ViewStates.TransactionSuccessful){
       props.setShouldPanelOpen(false);
-
-      // setinvoice(()=> {invoice.status ="Paid"})
-      // console.log(Data)
       setinvoice((prev: any)=> ({...prev,status: "Paid"}));
 
       const newData = props.data.map((x:  any)=>{
@@ -43,26 +40,6 @@ export const InvoiceDetails = (props: any) => {
         await axios.put('https://upiinvoices-default-rtdb.firebaseio.com/invoicesData.json',newData)
       }
       updateData();
-
-
-        
-
-
-
-
-      // props.setData((prev: any) => prev.map((x: any)=>{
-      //   if (x.invoiceNumber===invoice.invoiceNumber){
-      //     return {...x,status:"Paid"}
-      //   }
-      //   else{
-      //     return x
-      //   }
-      // }) )
-      // {Data.map((element)=>element.invoiceNumber===invoice.invoiceNumber ? invoice.status="Paid" : '')}
-      // props.setData(props.data);
-      // console.log(Data);
-
-      // console.log("Payment")
       props.alertHandler("Payment was successfully received", "Success")
   } else if(props.view!==props.ViewStates.InvoiceShow){
       props.setShouldPanelOpen(true);
@@ -94,8 +71,6 @@ export const InvoiceDetails = (props: any) => {
                   disabled={invoice.status == "Paid"}>
                   Pay Now
                 </Button>
-                {/* let paidInvoiceId == {props.invoiceNumber} */}
-                {/* {props.status==="Paid" ? {Data.map((invoice)=> {invoice[invoiceNumber]===paidInvoiceId ? invoice["status"]=="Paid":' '})}: ''} */}
               </td>
             </tr>
             <tr>

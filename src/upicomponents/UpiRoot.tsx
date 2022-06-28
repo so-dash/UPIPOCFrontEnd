@@ -55,9 +55,9 @@ export const UpiRoot = () => {
   const [paymentMethod, setPaymentMethod] = useState(PaymentMethods.UPIQr);
   const [qrcodestring, setQrcodestring] = useState("");
   const [shouldPanelOpen, setShouldPanelOpen] = useState(false);
-  // const [data , setData]=useState(Data);
   const [Data, setData] = useState([])
   useEffect(() => {
+    //fetching the invoices data from database to show on the homepage 
     const fetchdata =async()=>{
       const res = await fetch(`https://upiinvoices-default-rtdb.firebaseio.com/invoicesData.json`);
       const invoiceData = await res.json();
@@ -121,7 +121,8 @@ export const UpiRoot = () => {
   };
 
   const payByUPI = async(amount: any) => {
-     InitiateCollectRequestQr();
+    InitiateCollectRequestQr();
+    // fetching the qr string from the backend 
     let response = await fetch(`https://localhost:44307/api/Qr/${amount*100}`)
     // console.log(invoice.amount)
 
@@ -132,22 +133,20 @@ export const UpiRoot = () => {
     console.log(qrstring);
     setQrcodestring(qrstring);
     startVaildation(jresponse["data"]["transactionId"])
-   
-    // startValidation(jresponse["transactionID"])
     
 
   };
+  // Example for some responses:-
   // {"success":true,"code":"PAYMENT_SUCCESS","message":"Your payment is successful.","data":{"merchantId":"MERCHANTUAT","transactionId":"TXe3641597-d96c-4aaf-905b-4a962f463635","providerReferenceId":"T2206221647491682701105","amount":546745,"merchantOrderId":"Me3641597-d96c-4aaf-905b-4a962f463635","paymentState":"COMPLETED","payResponseCode":"SUCCESS"}}
   // {"success":true,"code":"PAYMENT_PENDING","message":"Your request is in pending state.","data":{"merchantId":"MERCHANTUAT","transactionId":"TX71f2e1f2-d301-44c4-afe3-2d904f0f7277","amount":1223,"merchantOrderId":"M71f2e1f2-d301-44c4-afe3-2d904f0f7277","paymentState":"PENDING","payResponseCode":"CREATED"}}
   // {"success":false,"code":"PAYMENT_ERROR","message":"Payment Failed","data":{"merchantId":"MERCHANTUAT","transactionId":"TX71f2e1f2-d301-44c4-afe3-2d904f0f7277","amount":1223,"merchantOrderId":"M71f2e1f2-d301-44c4-afe3-2d904f0f7277","paymentState":"FAILED","payResponseCode":"TIMED_OUT"}}
   const startVaildation = async(transactionId:any)=>{
-    
+    // fetching the validation response either transaction is successfull of failed or timeout
       let response = await fetch(`https://localhost:44307/api/status/${transactionId}`)
       let jresponse = await response.json();
       console.log(jresponse)
       if ( jresponse["success"]===true && jresponse["code"]==="PAYMENT_SUCCESS"){
         setView(ViewStates.TransactionSuccessful)
-        // {Data.map((element)=>element.status="Paid")}
         return ;
 
       }
@@ -159,9 +158,6 @@ export const UpiRoot = () => {
         setTimeout(()=>{startVaildation(transactionId)}, 2000); 
       }
        
-      //fetch while while not success
-      //when success set status
-      // setView(ViewStates.TransactionSuccessful)
 
   }
 
