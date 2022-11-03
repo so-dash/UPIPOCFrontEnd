@@ -121,19 +121,26 @@ export const UpiRoot = () => {
   };
 
   const payByUPI = async(amount: any) => {
-    InitiateCollectRequestQr();
-    // fetching the qr string from the backend 
-    let response = await fetch(`https://qrservice20221102173907.azurewebsites.net/api/Qr/${amount*100}`)
-    // console.log(invoice.amount)
 
-    let jresponse = await response.json();
-    // console.log(jresponse)
-    let qrstring = jresponse["data"]["qrString"];
+    if (paymentMethod == PaymentMethods.UPIQr){
 
-    console.log(qrstring);
-    setQrcodestring(qrstring);
-    startVaildation(jresponse["data"]["transactionId"])
-    
+      InitiateCollectRequestQr();
+      // fetching the qr string from the backend 
+      let response = await fetch(`https://qrservice20221102173907.azurewebsites.net/api/Qr/${amount*100}`)
+      // console.log(invoice.amount)
+  
+      let jresponse = await response.json();
+      // console.log(jresponse)
+      let qrstring = jresponse["data"]["qrString"];
+  
+      console.log(qrstring);
+      setQrcodestring(qrstring);
+      startVaildation(jresponse["data"]["transactionId"])
+  
+
+    }   else if (paymentMethod == PaymentMethods.UPIVpa){
+      setView(ViewStates.VerifyVpa);
+    }
 
   };
   // Example for some responses:-
