@@ -18,7 +18,7 @@ export const Table = (props: any)=> {
                             <th>Invoice Date</th>
                             <th>Billing Period</th>
                             <th>Amount Due</th>
-                            <th>Total Amount</th>
+
                             <th>Type</th>
                             <th>Status</th>
 
@@ -32,7 +32,6 @@ export const Table = (props: any)=> {
                             <td>{val.invoiceDate}</td>
                             <td>{val.billingPeriod}</td>
                             <td>{val.amount}</td>
-                            <td>{val.totalAmount}</td>
                             <td>{val.type}</td>
                             <td>{val.status}</td>
                             

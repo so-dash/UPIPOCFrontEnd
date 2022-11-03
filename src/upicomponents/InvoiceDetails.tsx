@@ -37,7 +37,7 @@ export const InvoiceDetails = (props: any) => {
         }
       })
       const updateData = async()=>{
-        await axios.put('https://upiinvoices-default-rtdb.firebaseio.com/invoicesData.json',newData)
+        await axios.put('https://upidemo-4a96e-default-rtdb.firebaseio.com/invoice.json',newData)
       }
       updateData();
       props.alertHandler("Payment was successfully received", "Success")
@@ -66,6 +66,7 @@ export const InvoiceDetails = (props: any) => {
               </td>
               <td>
                 <Button
+                
                   size="sm"
                   onClick={props.paynow}
                   disabled={invoice.status == "Paid"}>

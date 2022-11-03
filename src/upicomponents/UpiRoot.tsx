@@ -52,14 +52,14 @@ export const UpiRoot = () => {
   const [vpa, setVpa] = useState<string>("");
   const [vpaValid, setVpaValid] = useState<boolean>(true);
   const [panelHeading, setPanelHeading] = useState("Pay Now");
-  const [paymentMethod, setPaymentMethod] = useState(PaymentMethods.UPIQr);
+  const [paymentMethod, setPaymentMethod] = useState(PaymentMethods.UPIVpa);
   const [qrcodestring, setQrcodestring] = useState("");
   const [shouldPanelOpen, setShouldPanelOpen] = useState(false);
   const [Data, setData] = useState([])
   useEffect(() => {
     //fetching the invoices data from database to show on the homepage 
     const fetchdata =async()=>{
-      const res = await fetch(`https://upiinvoices-default-rtdb.firebaseio.com/invoicesData.json`);
+      const res = await fetch(`https://upidemo-4a96e-default-rtdb.firebaseio.com/invoice.json`);
       const invoiceData = await res.json();
       console.log(invoiceData);
       setData(invoiceData);
@@ -123,7 +123,7 @@ export const UpiRoot = () => {
   const payByUPI = async(amount: any) => {
     InitiateCollectRequestQr();
     // fetching the qr string from the backend 
-    let response = await fetch(`https://localhost:44307/api/Qr/${amount*100}`)
+    let response = await fetch(`https://qrservice20221102173907.azurewebsites.net/api/Qr/${amount*100}`)
     // console.log(invoice.amount)
 
     let jresponse = await response.json();
@@ -142,7 +142,7 @@ export const UpiRoot = () => {
   // {"success":false,"code":"PAYMENT_ERROR","message":"Payment Failed","data":{"merchantId":"MERCHANTUAT","transactionId":"TX71f2e1f2-d301-44c4-afe3-2d904f0f7277","amount":1223,"merchantOrderId":"M71f2e1f2-d301-44c4-afe3-2d904f0f7277","paymentState":"FAILED","payResponseCode":"TIMED_OUT"}}
   const startVaildation = async(transactionId:any)=>{
     // fetching the validation response either transaction is successfull of failed or timeout
-      let response = await fetch(`https://localhost:44307/api/status/${transactionId}`)
+      let response = await fetch(`https://qrservice20221102173907.azurewebsites.net/api/status/${transactionId}`)
       let jresponse = await response.json();
       console.log(jresponse)
       if ( jresponse["success"]===true && jresponse["code"]==="PAYMENT_SUCCESS"){

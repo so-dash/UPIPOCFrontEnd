@@ -72,10 +72,10 @@ export const PaymentPanel = (props: IPaymentPanel) => {
                         <img src={NetBankingIcon} className="paymentmethodicon" ></img>
                         <span className="paymentmethodname">Internet Banking</span>
                     </ListGroup.Item>
-                    <ListGroup.Item action disabled>
-                        {/* // action 
-                        // active={props.paymentMethod==PaymentMethods.UPIVpa} 
-                        // onClick={() => props.setPaymentMethod(PaymentMethods.UPIVpa)}> */}
+                    <ListGroup.Item 
+                        action 
+                        active={props.paymentMethod==PaymentMethods.UPIVpa} 
+                        onClick={() => props.setPaymentMethod(PaymentMethods.UPIVpa)}>
                         <img src={UpiIcon} className="paymentmethodicon" ></img>
                         <span className="paymentmethodname">UPI</span>
                     </ListGroup.Item>
@@ -103,35 +103,35 @@ export const PaymentPanel = (props: IPaymentPanel) => {
             </div>
           </>
         );
-      // case ViewStates.VerifyVpa:
-      //   return (
-      //     <>
-      //       <Card style={{ width: "18rem" }}>
-      //         <Card.Body>
-      //           <Card.Title>VPA details</Card.Title>
-      //           <Card.Subtitle className="mb-2 text-muted">
-      //             Enter your vpa details!
-      //           </Card.Subtitle>
-      //           <Card.Text>
-      //             <InputGroup className="mb-3">
-      //               <FormControl
-      //                 placeholder="Enter VPA"
-      //                 aria-label="VPA"
-      //                 aria-describedby="basic-addon1"
-      //                 value={props.vpa}
-      //                 onChange={props.updateVpa}
-      //                 isInvalid={!!!props.vpaValid}
-      //               />
-      //               <Form.Control.Feedback type="invalid">
-      //                 {"Please check the entered VPA again!"}
-      //               </Form.Control.Feedback>
-      //             </InputGroup>
-      //           </Card.Text>
-      //           <Button onClick={props.verifyVpa}>Verify and pay</Button>
-      //         </Card.Body>
-      //       </Card>
-      //     </>
-      //   );
+      case ViewStates.VerifyVpa:
+        return (
+          <>
+            <Card style={{ width: "18rem" }}>
+              <Card.Body>
+                <Card.Title>VPA details</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Enter your vpa details!
+                </Card.Subtitle>
+                <Card.Text>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      placeholder="Enter VPA"
+                      aria-label="VPA"
+                      aria-describedby="basic-addon1"
+                      value={props.vpa}
+                      onChange={props.updateVpa}
+                      isInvalid={!!!props.vpaValid}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {"Please check the entered VPA again!"}
+                    </Form.Control.Feedback>
+                  </InputGroup>
+                </Card.Text>
+                <Button onClick={props.verifyVpa}>Verify and pay</Button>
+              </Card.Body>
+            </Card>
+          </>
+        );
       case ViewStates.QrInitiate:
         return (
           <>
